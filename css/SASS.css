@@ -1,0 +1,107 @@
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.header {
+  width: 100%;
+  max-width: 1200px;
+  background-color: darksalmon;
+  font-family: 'Laila';
+  font-weight: 500;
+  padding: 20px;
+}
+
+.navbar {
+  max-width: 1200px;
+}
+
+.navbar-set {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
+.navbar-item {
+  padding: 5px;
+  padding-top: 10px;
+}
+
+.navbar-link {
+  color: aliceblue;
+  text-decoration: none;
+  cursor: pointer;
+  display: block;
+  position: relative;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+
+@media only screen and (max-width: 600px) {
+  .navbar-link {
+    display: none;
+  }
+}
+
+.navbar-link:hover::after {
+  width: 100%;
+}
+
+.navbar-link::after {
+  display: block;
+  background-color: whitesmoke;
+  height: 2px;
+  width: 0%;
+  position: absolute;
+  content: '';
+  bottom: -3px;
+  left: 0;
+  -webkit-transition: 0.2s ease-in-out;
+  transition: 0.2s ease-in-out;
+}
+
+.navbar-hamburger {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-transition: 0.2s;
+  transition: 0.2s;
+  display: none;
+}
+
+.navbar-hamburger:hover {
+  -webkit-transform: scale(1.13);
+          transform: scale(1.13);
+  cursor: pointer;
+}
+
+@media only screen and (max-width: 600px) {
+  .navbar-hamburger {
+    display: block;
+  }
+}
+
+.navbar-hamburger-img {
+  height: 30px;
+  width: 30px;
+}
+/*# sourceMappingURL=SASS.css.map */
