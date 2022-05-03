@@ -11,19 +11,59 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  position: relative;
+}
+
+body::before {
+  width: 42%;
+  background: #eeaeca;
+  background: -webkit-gradient(linear, right top, left top, from(#eeaeca), to(#e6e994));
+  background: linear-gradient(-90deg, #eeaeca 0%, #e6e994 100%);
+  position: absolute;
+  content: '';
+  right: 0;
+  top: 0;
+  height: 100%;
+  z-index: -10;
+}
+
+body::after {
+  width: 42%;
+  background: #eeaeca;
+  background: -webkit-gradient(linear, left top, right top, from(#eeaeca), to(#e6e994));
+  background: linear-gradient(90deg, #eeaeca 0%, #e6e994 100%);
+  position: absolute;
+  content: '';
+  left: 0;
+  top: 0;
+  height: 100%;
+  z-index: -10;
 }
 
 .header {
   width: 100%;
   max-width: 1200px;
-  background-color: darksalmon;
   font-family: 'Laila';
   font-weight: 500;
-  padding: 20px;
+  position: relative;
 }
 
 .navbar {
+  z-index: +3;
   max-width: 1200px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  background-color: darksalmon;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  -webkit-transition: 0.2s;
+  transition: 0.2s;
+}
+
+.navbar-scrolled {
+  padding-top: 5px;
+  padding-bottom: 5px;
 }
 
 .navbar-set {
@@ -34,9 +74,27 @@ body {
       justify-content: space-around;
 }
 
+.navbar-hamburger-clicked {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin-left: 25px;
+}
+
 .navbar-item {
-  padding: 5px;
-  padding-top: 10px;
+  padding: 10px;
+  padding-top: 15px;
+}
+
+@media only screen and (max-width: 600px) {
+  .navbar-item {
+    display: none;
+  }
+}
+
+.navbar-item-shown {
+  display: block;
 }
 
 .navbar-link {
@@ -48,16 +106,17 @@ body {
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
-}
-
-@media only screen and (max-width: 600px) {
-  .navbar-link {
-    display: none;
-  }
+  -webkit-transition: 0.2s;
+  transition: 0.2s;
 }
 
 .navbar-link:hover::after {
   width: 100%;
+}
+
+.navbar-link:hover {
+  -webkit-transform: scale(1.2);
+          transform: scale(1.2);
 }
 
 .navbar-link::after {
@@ -86,6 +145,10 @@ body {
   -webkit-transition: 0.2s;
   transition: 0.2s;
   display: none;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  margin-left: 40px;
 }
 
 .navbar-hamburger:hover {
@@ -103,5 +166,124 @@ body {
 .navbar-hamburger-img {
   height: 30px;
   width: 30px;
+}
+
+.header-slider {
+  width: 100%;
+  aspect-ratio: 4/2.5;
+  background-color: darkcyan;
+  position: relative;
+}
+
+@media only screen and (max-width: 600px) {
+  .header-slider {
+    aspect-ratio: 4/3.4;
+  }
+}
+
+.slider-buttons-set {
+  position: absolute;
+  top: 35%;
+  width: 100%;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.slider-button {
+  z-index: +2;
+  margin: 20px;
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  border: none;
+  background-color: darksalmon;
+  cursor: pointer;
+  -webkit-transition: 0.2s;
+  transition: 0.2s;
+}
+
+.slider-button:hover {
+  -webkit-box-shadow: 5px 7px 13px 0px rgba(0, 0, 0, 0.3);
+          box-shadow: 5px 7px 13px 0px rgba(0, 0, 0, 0.3);
+}
+
+.section {
+  height: 800px;
+  background-color: aqua;
+  width: 100%;
+}
+
+.button-arrow {
+  margin: 0 auto;
+  height: 70%;
+  width: auto;
+}
+
+.arrow-left {
+  -webkit-transform: rotate(180deg);
+          transform: rotate(180deg);
+}
+
+.story-line {
+  width: 100%;
+  height: 10px;
+  background-color: rgba(238, 174, 202, 0.3);
+  z-index: +5;
+}
+
+.sliders-show {
+  max-width: 1200px;
+  height: 100%;
+  position: relative;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+}
+
+.images-set {
+  max-width: 1200px;
+  height: 100%;
+  position: relative;
+  -webkit-transition: 0.2s ease-in-out;
+  transition: 0.2s ease-in-out;
+}
+
+.slide-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.slide-img {
+  height: 100%;
+  width: 100%;
+  display: block;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+#slide0-wrapper {
+  background-color: aquamarine;
+  -webkit-transform: translate(-100%);
+          transform: translate(-100%);
+}
+
+#slide1-wrapper {
+  background-color: brown;
+}
+
+#slide2-wrapper {
+  background-color: beige;
+  -webkit-transform: translate(100%);
+          transform: translate(100%);
 }
 /*# sourceMappingURL=SASS.css.map */
