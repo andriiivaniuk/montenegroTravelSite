@@ -61,7 +61,7 @@ body{
     max-width: 1200px;
     padding-top: 10px;
     padding-bottom: 10px;
-    background-color: darksalmon;
+    background-color: black;
     position: sticky;
     top: 0;
     transition: $animation-speed;
@@ -165,7 +165,7 @@ body{
 
 .slider-buttons-set{
     position: absolute;
-    top: 35%;
+    top: 40%;
     width: 100%;
     height: fit-content;
     display: flex;
@@ -179,7 +179,7 @@ body{
     width: 50px;
     border-radius: 50%;
     border: none;
-    background-color: darksalmon;
+    background-color: white;
     cursor: pointer;
     transition: $animation-speed;
 
@@ -211,6 +211,15 @@ body{
     z-index: +5;
 }
 
+.story-line__filler{
+    background-color: white;
+    opacity: 0.8;
+    transition: 0.4s;
+    height: 10px;
+    width: 0;
+    border-radius: 0 5px 5px 0;
+}
+
 .sliders-show{
     max-width: 1200px;
     height: 100%;
@@ -224,7 +233,7 @@ body{
     max-width: 1200px;
     height: 100%;
     position: relative;
-    transition: $animation-speed ease-in-out;
+    transition: 0.4s ease-in-out;
 }
 
 .slide-wrapper{
@@ -244,14 +253,24 @@ body{
 
 #slide0-wrapper{
     background-color: aquamarine;
-    transform: translate(-100%);
 }
 
 #slide1-wrapper{
     background-color: brown;
+    transform: translate(100%);
 }
 
 #slide2-wrapper{
     background-color: beige;
-    transform: translate(100%);
+    transform: translate(200%);
+}
+
+#slide3-wrapper{
+    background-color: beige;
+    transform: translate(300%);
+}
+
+#slide4-wrapper{
+    background-color: beige;
+    transform: translate(400%);
 }

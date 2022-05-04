@@ -1,19 +1,24 @@
 const navbar = document.querySelector(".navbar");
 const hamburger = document.querySelector(".navbar-hamburger");
+const storyFiller = document.querySelector(".story-line__filler");
+
 let hamburgerShown = false;
+
+let sliderMoved = 0;
+let currentSlide = 0;
+const slidersAmount = document.querySelector(".images-set").children.length - 1;
+const fillerStep = 100 / (slidersAmount + 1);
 
 
 const changeNavBar = () => {
     
     if(window.scrollY !== 0 && !navbar.classList.contains("navbar-scrolled")){
         navbar.classList.add("navbar-scrolled");
-        console.log("scrolled added");
         return;
     }
 
     if(window.scrollY === 0 && navbar.classList.contains("navbar-scrolled")){
         navbar.classList.remove("navbar-scrolled");
-        console.log("scrolled removed");
         return;
     }
 
@@ -45,15 +50,40 @@ const onSliderButtonClick = (e) => {
     }
     else{
         if(e.target.classList.contains("arrow-left")){
-            document.getElementById("images-set").style.transform = "translate(-100%)";
+            if(currentSlide === 0){
+                currentSlide = slidersAmount;
+                document.getElementById("images-set").style.transform =  `translate(${sliderMoved -= 100 * slidersAmount}%)`;
+                updateStoryline();
+                return;
+            }
+            currentSlide--;
+            document.getElementById("images-set").style.transform = `translate(${sliderMoved += 100}%)`;
+            updateStoryline();
+            return;
+            
         }
         else{
-            document.getElementById("images-set").style.transform =  "translate(+100%)";
+            if(currentSlide === slidersAmount){
+                currentSlide = 0;
+                document.getElementById("images-set").style.transform =  `translate(${sliderMoved += 100 * slidersAmount}%)`;
+                updateStoryline();
+                return;
+            }
+            currentSlide++;
+            document.getElementById("images-set").style.transform =  `translate(${sliderMoved -= 100}%)`;
+            updateStoryline();
+            return;
         }
     }
+}
+
+const updateStoryline = () => {
+    storyFiller.style.width = (currentSlide + 1) * fillerStep + "%";
 }
 
 document.addEventListener('scroll', changeNavBar);
 hamburger.addEventListener("click", onHamburgerClick);
 document.querySelector(".slider-buttons-set").addEventListener("click", onSliderButtonClick);
+
+updateStoryline();
 

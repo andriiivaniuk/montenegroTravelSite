@@ -53,7 +53,7 @@ body::after {
   max-width: 1200px;
   padding-top: 10px;
   padding-bottom: 10px;
-  background-color: darksalmon;
+  background-color: black;
   position: -webkit-sticky;
   position: sticky;
   top: 0;
@@ -183,7 +183,7 @@ body::after {
 
 .slider-buttons-set {
   position: absolute;
-  top: 35%;
+  top: 40%;
   width: 100%;
   height: -webkit-fit-content;
   height: -moz-fit-content;
@@ -203,7 +203,7 @@ body::after {
   width: 50px;
   border-radius: 50%;
   border: none;
-  background-color: darksalmon;
+  background-color: white;
   cursor: pointer;
   -webkit-transition: 0.2s;
   transition: 0.2s;
@@ -238,6 +238,16 @@ body::after {
   z-index: +5;
 }
 
+.story-line__filler {
+  background-color: white;
+  opacity: 0.8;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+  height: 10px;
+  width: 0;
+  border-radius: 0 5px 5px 0;
+}
+
 .sliders-show {
   max-width: 1200px;
   height: 100%;
@@ -251,8 +261,8 @@ body::after {
   max-width: 1200px;
   height: 100%;
   position: relative;
-  -webkit-transition: 0.2s ease-in-out;
-  transition: 0.2s ease-in-out;
+  -webkit-transition: 0.4s ease-in-out;
+  transition: 0.4s ease-in-out;
 }
 
 .slide-wrapper {
@@ -273,17 +283,29 @@ body::after {
 
 #slide0-wrapper {
   background-color: aquamarine;
-  -webkit-transform: translate(-100%);
-          transform: translate(-100%);
 }
 
 #slide1-wrapper {
   background-color: brown;
+  -webkit-transform: translate(100%);
+          transform: translate(100%);
 }
 
 #slide2-wrapper {
   background-color: beige;
-  -webkit-transform: translate(100%);
-          transform: translate(100%);
+  -webkit-transform: translate(200%);
+          transform: translate(200%);
+}
+
+#slide3-wrapper {
+  background-color: beige;
+  -webkit-transform: translate(300%);
+          transform: translate(300%);
+}
+
+#slide4-wrapper {
+  background-color: beige;
+  -webkit-transform: translate(400%);
+          transform: translate(400%);
 }
 /*# sourceMappingURL=SASS.css.map */
