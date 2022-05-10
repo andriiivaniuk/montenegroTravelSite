@@ -81,9 +81,14 @@ const updateStoryline = () => {
     storyFiller.style.width = (currentSlide + 1) * fillerStep + "%";
 }
 
+const init = () => {
+    updateStoryline();
+}
+
 document.addEventListener('scroll', changeNavBar);
 hamburger.addEventListener("click", onHamburgerClick);
 document.querySelector(".slider-buttons-set").addEventListener("click", onSliderButtonClick);
 
-updateStoryline();
+
+init();
 

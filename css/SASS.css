@@ -214,6 +214,14 @@ body::after {
           box-shadow: 5px 7px 13px 0px rgba(0, 0, 0, 0.3);
 }
 
+@media only screen and (max-width: 700px) {
+  .slider-button {
+    margin: 10px;
+    height: 30px;
+    width: 30px;
+  }
+}
+
 .section {
   height: 800px;
   background-color: aqua;
@@ -245,7 +253,7 @@ body::after {
   transition: 0.4s;
   height: 10px;
   width: 0;
-  border-radius: 0 5px 5px 0;
+  border-radius: 5px 5px 5px 5px;
 }
 
 .sliders-show {
@@ -281,31 +289,89 @@ body::after {
      object-fit: cover;
 }
 
-#slide0-wrapper {
-  background-color: aquamarine;
-}
-
 #slide1-wrapper {
-  background-color: brown;
   -webkit-transform: translate(100%);
           transform: translate(100%);
 }
 
 #slide2-wrapper {
-  background-color: beige;
   -webkit-transform: translate(200%);
           transform: translate(200%);
 }
 
 #slide3-wrapper {
-  background-color: beige;
   -webkit-transform: translate(300%);
           transform: translate(300%);
 }
 
 #slide4-wrapper {
-  background-color: beige;
   -webkit-transform: translate(400%);
           transform: translate(400%);
+}
+
+.slide-text-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  color: aliceblue;
+  padding-left: 30px;
+  padding-top: 30px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  font-family: 'epilogue';
+  max-width: 30%;
+  height: 100%;
+  background: white;
+  background: -webkit-gradient(linear, right top, left top, from(rgba(255, 255, 255, 0)), to(rgba(0, 0, 0, 0.854779)));
+  background: linear-gradient(270deg, rgba(255, 255, 255, 0) 0%, rgba(0, 0, 0, 0.854779) 100%);
+}
+
+@media only screen and (max-width: 1150px) {
+  .slide-text-wrapper {
+    padding-left: 100px;
+  }
+}
+
+@media only screen and (max-width: 700px) {
+  .slide-text-wrapper {
+    padding-left: 65px;
+  }
+}
+
+@media only screen and (max-width: 550px) {
+  .slide-text-wrapper {
+    max-width: 40%;
+  }
+}
+
+.slide-title {
+  font-size: 3.3em;
+  display: block;
+}
+
+@media only screen and (max-width: 900px) {
+  .slide-title {
+    font-size: 2.3em;
+  }
+}
+
+.slide-text {
+  text-align: left;
+  margin-top: 10px;
+  font-weight: 400;
+  font-size: larger;
+  display: block;
+  line-height: 21px;
+}
+
+@media only screen and (max-width: 900px) {
+  .slide-text {
+    font-size: 1em;
+  }
 }
 /*# sourceMappingURL=SASS.css.map */
