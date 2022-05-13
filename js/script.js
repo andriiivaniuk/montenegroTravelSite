@@ -8,6 +8,7 @@ let sliderMoved = 0;
 let currentSlide = 0;
 const slidersAmount = document.querySelector(".images-set").children.length - 1;
 const fillerStep = 100 / (slidersAmount + 1);
+const slideShowTime = 4000;
 
 
 const changeNavBar = () => {
@@ -49,31 +50,43 @@ const onSliderButtonClick = (e) => {
         return;
     }
     else{
+        
+        updateInterval();
+
         if(e.target.classList.contains("arrow-left")){
-            if(currentSlide === 0){
-                currentSlide = slidersAmount;
-                document.getElementById("images-set").style.transform =  `translate(${sliderMoved -= 100 * slidersAmount}%)`;
-                updateStoryline();
-                return;
-            }
-            currentSlide--;
-            document.getElementById("images-set").style.transform = `translate(${sliderMoved += 100}%)`;
-            updateStoryline();
+            changeSlide("left");
             return;
-            
         }
         else{
-            if(currentSlide === slidersAmount){
-                currentSlide = 0;
-                document.getElementById("images-set").style.transform =  `translate(${sliderMoved += 100 * slidersAmount}%)`;
-                updateStoryline();
-                return;
-            }
-            currentSlide++;
-            document.getElementById("images-set").style.transform =  `translate(${sliderMoved -= 100}%)`;
+            changeSlide("right");
+            return;
+        }
+    }
+}
+
+const changeSlide = (direction) => {
+    if(direction === "left"){
+        if(currentSlide === 0){
+            currentSlide = slidersAmount;
+            document.getElementById("images-set").style.transform =  `translate(${sliderMoved -= 100 * slidersAmount}%)`;
             updateStoryline();
             return;
         }
+        currentSlide--;
+        document.getElementById("images-set").style.transform = `translate(${sliderMoved += 100}%)`;
+        updateStoryline();
+    }
+
+    if(direction === "right"){
+        if(currentSlide === slidersAmount){
+            currentSlide = 0;
+            document.getElementById("images-set").style.transform =  `translate(${sliderMoved += 100 * slidersAmount}%)`;
+            updateStoryline();
+            return;
+        }
+        currentSlide++;
+        document.getElementById("images-set").style.transform =  `translate(${sliderMoved -= 100}%)`;
+        updateStoryline();
     }
 }
 
@@ -91,4 +104,15 @@ document.querySelector(".slider-buttons-set").addEventListener("click", onSlider
 
 
 init();
+
+let initInterval = setInterval(()=>{
+    changeSlide("right");
+}, slideShowTime);
+
+const updateInterval = () => {
+    clearInterval(initInterval);
+    initInterval = setInterval(()=>{
+        changeSlide("right");
+    }, slideShowTime);
+}
 
