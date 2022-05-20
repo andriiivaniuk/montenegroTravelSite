@@ -1,6 +1,7 @@
 const navbar = document.querySelector(".navbar");
 const hamburger = document.querySelector(".navbar-hamburger");
 const storyFiller = document.querySelector(".story-line__filler");
+const seeMoreButs = document.querySelectorAll(".slider__see-button");
 
 let hamburgerShown = false;
 
@@ -103,11 +104,11 @@ hamburger.addEventListener("click", onHamburgerClick);
 document.querySelector(".slider-buttons-set").addEventListener("click", onSliderButtonClick);
 
 
-init();
-
 let initInterval = setInterval(()=>{
     changeSlide("right");
 }, slideShowTime);
+
+let hoverTimeout = null;
 
 const updateInterval = () => {
     clearInterval(initInterval);
@@ -115,4 +116,17 @@ const updateInterval = () => {
         changeSlide("right");
     }, slideShowTime);
 }
+
+for(node of seeMoreButs){
+    node.addEventListener("mouseover", () => {clearInterval(initInterval)});
+    node.addEventListener("mouseout", ()=>{
+        clearTimeout(hoverTimeout);
+        hoverTimeout = setTimeout(()=>{
+            changeSlide("right");
+            updateInterval();
+        }, 500);
+    } );
+}
+
+init();
 
