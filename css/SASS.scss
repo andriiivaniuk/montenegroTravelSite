@@ -71,6 +71,7 @@ body{
 .navbar-scrolled{
     padding-top: 5px;
     padding-bottom: 5px;
+    opacity: 0.83;
 }
 
 .navbar-set{
@@ -165,7 +166,7 @@ body{
     position: relative;
 
     @include mq-max(600px){
-        aspect-ratio: 4/4.5;
+        aspect-ratio: 4/3.5;
     }
 }
 
@@ -379,24 +380,99 @@ body{
 }
 
 .welcome-section{
-    height: 800px;
-   
-    max-width: 1200px;
-    width: 100%;
+    margin-top: 10px;
     position: relative;
+    display: flex;
+    background-color: black;
+    justify-content: center;
+    width: 100%;
+    max-width: 1200px;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+.discover-section{
+    border-top: 10px solid aliceblue;
 
     display: flex;
-    justify-content: center;
-    //align-items: center;
+    flex-direction: column;
+    align-items: center;
+    max-width: 1200px;
+    background-color: black;
 }
 
 .weclcome-title{
     position: relative;
-    color: black;
-    
+    color: aliceblue;
     font-family: 'Chakra Petch';
-    font-weight: 700;
+    font-weight: 600;
     font-size: 3rem;
+    text-align: center;   
+    padding: 10px;
+
+    @include mq-max(900px){
+        font-size: 2.3em;
+    }
+}
+
+.welcome-subtitle{
     text-align: center;
+    color: aliceblue; 
+    padding-bottom: 10px;
+}
+
+.discover-things-to-do{
+    height: fit-content;
+    width: 95%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.things-to-do-item{
+
+    background-color: aqua;
+    padding: 10px;
+    margin: 10px;
+    flex-basis: 25%;
+    flex-grow: 1;
+    aspect-ratio: 1/1;
+    position: relative;
+
+    border-radius: 25px 0 25px 0;
+    overflow: hidden;
+
+    @include mq-max(600px){
+        flex-basis: 90%;
+    }
+
+    @include mq-max(950px){
+        flex-basis: 42%;
+    }
+
+}
+
+.to-do-item-title-base{
+    position: absolute;
+    height: 40px;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: wheat;
+
+}
+
+.to-do-title-text{
+    
+    display: block;
+    text-align: center;
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
     
 }

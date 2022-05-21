@@ -109,6 +109,7 @@ let initInterval = setInterval(()=>{
 }, slideShowTime);
 
 let hoverTimeout = null;
+let hoverLastTime = null;
 
 const updateInterval = () => {
     clearInterval(initInterval);
@@ -118,13 +119,19 @@ const updateInterval = () => {
 }
 
 for(node of seeMoreButs){
-    node.addEventListener("mouseover", () => {clearInterval(initInterval)});
-    node.addEventListener("mouseout", ()=>{
+    node.addEventListener("mouseover", () => {
+        clearInterval(initInterval);
         clearTimeout(hoverTimeout);
-        hoverTimeout = setTimeout(()=>{
+        hoverLastTime = Date.now();
+    });
+
+    node.addEventListener("mouseout", () => {
+        
+        clearTimeout(hoverTimeout);
+        hoverTimeout = setTimeout( () => {
             changeSlide("right");
             updateInterval();
-        }, 500);
+        }, 1000);
     } );
 }
 
