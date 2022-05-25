@@ -204,7 +204,7 @@ body{
     }
 }
 
-.button-arrow{
+.slider-button-arrow{
     margin:  0 auto;
     height: 70%;
     width: auto;
@@ -394,6 +394,9 @@ body{
 
 .discover-section{
     border-top: 10px solid aliceblue;
+    
+    border-radius:  35px 35px 0 0;
+    overflow: hidden;
 
     display: flex;
     flex-direction: column;
@@ -444,6 +447,12 @@ body{
     border-radius: 25px 0 25px 0;
     overflow: hidden;
 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    font-weight: 600;
+
     @include mq-max(600px){
         flex-basis: 90%;
     }
@@ -451,7 +460,35 @@ body{
     @include mq-max(950px){
         flex-basis: 42%;
     }
+}
 
+.to-do-item__button-set{
+    height: 11%;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    position: absolute;
+    left: 0;
+}
+
+.to-do__slide-button-wrapper{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: fit-content;
+    cursor: pointer;
+}
+
+.to-do__slide-button-img{
+    height: 100%;
+    width: fit-content;
+    display: block;
+    object-fit: contain;
+}
+
+.to-do__button-right{
+    transform: rotate(180deg);
 }
 
 .to-do-item-title-base{
@@ -475,4 +512,27 @@ body{
     justify-content: center;
     align-items: center;
     
+}
+
+.to-do-slider{
+    position: relative;
+    height: 100%;
+    width: 100%;
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.to-do-slider-item{
+    display: block;
+    position: absolute;
+    z-index: +1;
+    transition: $animation-speed;
+    opacity: 0;
+}
+
+.to-do-active-slide{
+    opacity: 1;
 }

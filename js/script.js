@@ -11,6 +11,76 @@ const slidersAmount = document.querySelector(".images-set").children.length - 1;
 const fillerStep = 100 / (slidersAmount + 1);
 const slideShowTime = 4000;
 
+let feelTodo;
+
+class ToDoSlider{
+
+    slidesAmount;
+    currentSlideNum;
+    currentSlideNode;
+    allSlideNodes;
+
+    buttonsSet;
+    buttonLeft;
+    buttonRight;
+
+    constructor(nodeId){
+        this.allSlideNodes = document.getElementById(nodeId).children;
+        this.slidesAmount = document.getElementById(nodeId).children.length - 1;
+        this.currentSlideNum = 0;
+        this.currentSlideNode = this.allSlideNodes[this.currentSlideNum];
+
+        this.allSlideNodes[this.currentSlideNum].classList.toggle("to-do-active-slide");
+
+        this.buttonsSet = document.getElementById(nodeId).
+        parentElement.querySelectorAll(".to-do__slide-button-wrapper");
+
+        if(this.buttonsSet[0].children[0].classList.contains("to-do__button-right")){
+            this.buttonRight = this.buttonsSet[0].children[0];
+            this.buttonLeft = this.buttonsSet[1].children[0];
+        }
+
+        if(this.buttonsSet[1].children[0].classList.contains("to-do__button-right")){
+            this.buttonRight = this.buttonsSet[1].children[0];
+            this.buttonLeft = this.buttonsSet[0].children[0];
+        }
+
+        this.buttonLeft.addEventListener("click", this.changeToDoSlideLeft);
+        this.buttonRight.addEventListener("click", this.changeToDoSlideRight);
+    }
+
+    changeToDoSlideLeft = () => {
+        this.currentSlideNode.classList.toggle("to-do-active-slide");
+        if(this.currentSlideNum === 0){
+            this.currentSlideNum = this.slidesAmount;
+            this.currentSlideNode = this.allSlideNodes[this.currentSlideNum];
+            this.currentSlideNode.classList.toggle("to-do-active-slide");
+            return;
+        }
+        else{
+            this.currentSlideNum--;
+            this.currentSlideNode = this.allSlideNodes[this.currentSlideNum];
+            this.currentSlideNode.classList.toggle("to-do-active-slide");
+            return;
+        }
+    }
+
+    changeToDoSlideRight = () => {
+        this.currentSlideNode.classList.toggle("to-do-active-slide");
+        if(this.currentSlideNum === this.slidesAmount){
+            this.currentSlideNum = 0;
+            this.currentSlideNode = this.allSlideNodes[this.currentSlideNum];
+            this.currentSlideNode.classList.toggle("to-do-active-slide");
+            return;
+        }
+        else{
+            this.currentSlideNum++;
+            this.currentSlideNode = this.allSlideNodes[this.currentSlideNum];
+            this.currentSlideNode.classList.toggle("to-do-active-slide");
+            return;
+        }
+    }
+}
 
 const changeNavBar = () => {
     
@@ -47,7 +117,7 @@ const onHamburgerClick = () => {
 }
 
 const onSliderButtonClick = (e) => {
-    if(!e.target.classList.contains("button-arrow")){
+    if(!e.target.classList.contains("slider-button-arrow")){
         return;
     }
     else{
@@ -97,6 +167,7 @@ const updateStoryline = () => {
 
 const init = () => {
     updateStoryline();
+    feelTodo = new ToDoSlider("to-do-feel");
 }
 
 document.addEventListener('scroll', changeNavBar);
@@ -136,4 +207,5 @@ for(node of seeMoreButs){
 }
 
 init();
+
 

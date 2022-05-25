@@ -240,7 +240,7 @@ body::after {
   }
 }
 
-.button-arrow {
+.slider-button-arrow {
   margin: 0 auto;
   height: 70%;
   width: auto;
@@ -460,6 +460,8 @@ body::after {
 
 .discover-section {
   border-top: 10px solid aliceblue;
+  border-radius: 35px 35px 0 0;
+  overflow: hidden;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -526,6 +528,17 @@ body::after {
   position: relative;
   border-radius: 25px 0 25px 0;
   overflow: hidden;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  font-weight: 600;
 }
 
 @media only screen and (max-width: 600px) {
@@ -540,6 +553,51 @@ body::after {
     -ms-flex-preferred-size: 42%;
         flex-basis: 42%;
   }
+}
+
+.to-do-item__button-set {
+  height: 11%;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  position: absolute;
+  left: 0;
+}
+
+.to-do__slide-button-wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 100%;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  cursor: pointer;
+}
+
+.to-do__slide-button-img {
+  height: 100%;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  display: block;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+
+.to-do__button-right {
+  -webkit-transform: rotate(180deg);
+          transform: rotate(180deg);
 }
 
 .to-do-item-title-base {
@@ -565,5 +623,37 @@ body::after {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+}
+
+.to-do-slider {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.to-do-slider-item {
+  display: block;
+  position: absolute;
+  z-index: +1;
+  -webkit-transition: 0.2s;
+  transition: 0.2s;
+  opacity: 0;
+}
+
+.to-do-active-slide {
+  opacity: 1;
 }
 /*# sourceMappingURL=SASS.css.map */
