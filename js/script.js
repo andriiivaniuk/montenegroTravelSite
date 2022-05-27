@@ -24,6 +24,8 @@ class ToDoSlider{
     buttonLeft;
     buttonRight;
 
+    carouselNode;
+
     constructor(nodeId){
         this.allSlideNodes = document.getElementById(nodeId).children;
         this.slidesAmount = document.getElementById(nodeId).children.length - 1;
@@ -47,36 +49,55 @@ class ToDoSlider{
 
         this.buttonLeft.addEventListener("click", this.changeToDoSlideLeft);
         this.buttonRight.addEventListener("click", this.changeToDoSlideRight);
+
+        this.carouselNode = document.getElementById(nodeId).parentElement.
+        querySelector(".to-do-carousel");
+
+        for(let i = 0; i <= this.slidesAmount; i++){
+            let carouselCircle = document.createElement("div");
+            carouselCircle.classList.add("to-do-circle");
+            this.carouselNode.append(carouselCircle);
+        }
+
+        this.carouselNode.children[0].classList.toggle("active-circle");
     }
 
     changeToDoSlideLeft = () => {
         this.currentSlideNode.classList.toggle("to-do-active-slide");
+        this.carouselNode.children[this.currentSlideNum].classList.toggle("active-circle");
+
         if(this.currentSlideNum === 0){
             this.currentSlideNum = this.slidesAmount;
             this.currentSlideNode = this.allSlideNodes[this.currentSlideNum];
             this.currentSlideNode.classList.toggle("to-do-active-slide");
+            this.carouselNode.children[this.currentSlideNum].classList.toggle("active-circle");
             return;
         }
         else{
             this.currentSlideNum--;
             this.currentSlideNode = this.allSlideNodes[this.currentSlideNum];
             this.currentSlideNode.classList.toggle("to-do-active-slide");
+            this.carouselNode.children[this.currentSlideNum].classList.toggle("active-circle");
             return;
         }
     }
 
     changeToDoSlideRight = () => {
+        this.carouselNode.children[this.currentSlideNum].classList.toggle("active-circle");
         this.currentSlideNode.classList.toggle("to-do-active-slide");
+
         if(this.currentSlideNum === this.slidesAmount){
             this.currentSlideNum = 0;
             this.currentSlideNode = this.allSlideNodes[this.currentSlideNum];
             this.currentSlideNode.classList.toggle("to-do-active-slide");
+            this.carouselNode.children[this.currentSlideNum].classList.toggle("active-circle");
             return;
         }
         else{
             this.currentSlideNum++;
             this.currentSlideNode = this.allSlideNodes[this.currentSlideNum];
             this.currentSlideNode.classList.toggle("to-do-active-slide");
+            this.carouselNode.children[this.currentSlideNum].classList.toggle("active-circle");
             return;
         }
     }
@@ -168,6 +189,11 @@ const updateStoryline = () => {
 const init = () => {
     updateStoryline();
     feelTodo = new ToDoSlider("to-do-feel");
+    seeToDo = new ToDoSlider("to-do-see");
+    eatToDo = new ToDoSlider("to-do-eat");
+    exploreToDo = new ToDoSlider("to-do-explore");
+    learnToDo = new ToDoSlider("to-do-learn");
+    stayToDo = new ToDoSlider("to-do-stay");
 }
 
 document.addEventListener('scroll', changeNavBar);
